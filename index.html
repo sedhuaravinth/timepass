@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>stone_paper_scissors</title>
+    <script src="https://kit.fontawesome.com/e391ce7786.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="icon.png" type="image/png">
+
+</head>
+<body>
+    <h1>STONE-PAPER-SCISSORS</h1>
+    <hr>
+    <h2 id="demo">Try your Luck!!</h2>
+    <div class="container">
+        <div class="selection">
+            <div class="info">
+                <h3>YOU=</h3><span id="playerscore">0</span>
+            </div>
+            <div class="show">
+                <i class="fas fa-hand-rock"></i>
+            </div>
+        </div>
+        <div class="selection">
+            <div class="info">
+                <h3>COMPUTER=</h3><span id="computerscore">0</span>
+            </div>
+            <div class="show computer">
+                <i class="fas fa-hand-scissors"></i>
+            </div>
+        </div>
+    </div>
+    <h2 style="color: rgb(233, 33, 19);" id="demo2">Choose One</h2>
+    <div class="selection">
+        <button class="fas fa-hand-rock" id="rock"></button>
+        <button class="fas fa-hand-paper" id="paper"></button>
+        <button class="fas fa-hand-scissors" id="scissors"></button>
+    </div>
+    <div>
+        <button id="btn" type="button" onclick="window.location.reload();">Restart</button>
+    </div>
+    <hr><p style="font-size: small; color: burlywood;">script by SEDHU</p>
+    <script>
+        let computerscore=1;
+        let playerscore=1;
+        const pscore = document.getElementById("playerscore")
+        const cscore = document.getElementById("computerscore")
+        const buttons = document.querySelectorAll(".selection button")
+        const showicon = document.querySelector(".show i")
+        const computershowicon = document.querySelector(".computer i")
+        
+
+        
+
+
+        const randomclasses = ["fas fa-hand-rock", "fas fa-hand-paper","fas fa-hand-scissors"];
+        const text = document.getElementById("demo")
+        const text2 = document.getElementById("demo2")
+
+
+        const game=( ) =>{
+            buttons.forEach(btn =>{
+                btn.addEventListener("click",(e)=>{
+                    let clickbtn = e.target.className;
+                    showicon.className=clickbtn;
+                    let randomnum=Math.floor(Math.random()*randomclasses.length);
+                    computershowicon.className=randomclasses[randomnum];
+
+
+                    if(showicon.className===computershowicon.className){
+                        pscore.innerHTML =pscore.innerHTML;
+                        cscore.innerHTML=cscore.innerHTML;
+                        text.innerHTML="IT'S A TIE!!"
+                        text.style.color="orange";
+                        text2.innerHTML= text.innerHTML
+                        text2.style.color="orange"
+                    }
+
+                    else if(showicon.className === randomclasses[0]&& computershowicon.className===randomclasses[2]){
+                        pscore.innerHTML = playerscore;
+                        playerscore++;
+                        text.innerHTML="IT'S A WIN";
+                        text.style.color='rgb(1,146,1)' 
+                        text2.innerHTML = text.innerHTML;
+                        text2.style.color="rgb(1,146,1)";
+                    }
+                    else if (showicon.className===randomclasses[0]&& computershowicon.className[1]){
+                        cscore.innerHTML=computerscore;
+                        computerscore++;
+                        text.innerHTML = "YOU LOOS!"
+                        text.style.color="red";
+                        text2.innerHTML = text.innerHTML;
+                        text2.style.color="red";
+                    }
+                    else if (showicon.className===randomclasses[1]&& computershowicon.className[2]){
+                        cscore.innerHTML=computerscore;
+                        computerscore++;
+                        text.innerHTML = "YOU LOOS!"
+                        text.style.color="red";
+                        text2.innerHTML = text.innerHTML;
+                        text2.style.color="red";
+                    }
+                    else if(showicon.className === randomclasses[1]&& computershowicon.className===randomclasses[0]){
+                        pscore.innerHTML = playerscore;
+                        playerscore++;
+                        text.innerHTML="IT'S A WIN";
+                        text.style.color='rgb(1,146,1)' 
+                        text2.innerHTML = text.innerHTML;
+                        text2.style.color="rgb(1,146,1)";
+                    }
+                    else if (showicon.className===randomclasses[2]&& computershowicon.className[0]){
+                        cscore.innerHTML=computerscore;
+                        computerscore++;
+                        text.innerHTML = "YOU LOOS!"
+                        text.style.color="red";
+                        text2.innerHTML = text.innerHTML;
+                        text2.style.color="red";
+                    }
+                    else if(showicon.className === randomclasses[2]&& computershowicon.className===randomclasses[1]){
+                        pscore.innerHTML = playerscore;
+                        playerscore++;
+                        text.innerHTML="IT'S A WIN";
+                        text.style.color='rgb(1,146,1)' 
+                        text2.innerHTML = text.innerHTML;
+                        text2.style.color="rgb(1,146,1)";
+                    }
+                })
+            })
+        }
+                      
+        
+            
+        
+        game();
+
+                
+    </script>
+    
+</body>
+</html>
